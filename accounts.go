@@ -92,8 +92,8 @@ type Balance struct {
 }
 
 // AccountBalance returns the the account balance for the current customer.
-func (c *Client) AccountBalance(ctx context.Context) (*Balance, *http.Response, error) {
-	req, err := c.NewRequest("GET", "/api/v1/accounts/balance", nil)
+func (c *Client) AccountBalance(ctx context.Context, uid string) (*Balance, *http.Response, error) {
+    req, err := c.NewRequest("GET", "/api/v2/accounts/"+uid+"/balance", nil)
 	if err != nil {
 		return nil, nil, err
 	}
